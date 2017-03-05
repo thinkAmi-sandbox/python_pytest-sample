@@ -2,15 +2,31 @@
 
 # Tested environment
 
+## Mac
+
+- Mac OS X 10.11.6
+- Python 3.6.0
+- pytest 3.0.6
+
+　  
+## Windows
+
+tested only `e.g._double_underscore_prefix_module`
+
 - Windows10 x64
 - Python 3.6.0 32bit
 - pytest 3.0.5
 
 　  
-# Samples
+# Examples
 
-- `test_double_underscore_prefix_module/`
-  - test: double underscore prefix module
+- `e.g._double_underscore_prefix_module/`
+  - sample code: double underscore prefix module
+  - run test by `e.g._double_underscore_prefix_module/ $ python -m pytest`
+
+- `e.g._monkeypatch/`
+  - sample code: usage pytest.monkeypatch
+  - run test by `e.g._monkeypatch/ $ python -m pytest`
 
 　  
 # Related Blog (Written in Japanese)
