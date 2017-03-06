@@ -130,7 +130,10 @@ class Test_target:
         # http://doc.pytest.org/en/latest/capture.html
         def print_dummy(arg):
             print('ham')
-        monkeypatch.setattr(Target, 'write_stdout', print_dummy)
+        # python3ではprintは式なので、lambdaに指定可能
+        monkeypatch.setattr(Target, 'write_stdout', lambda x: print('ham'))
+        # python2ではprintは文なので、lamdbaに指定できないことから、ダミー関数を使う
+        # monkeypatch.setattr(Target, 'write_stdout', print_dummy)
         sut = Target()
         actual = sut.write_stdout()
         actual, _ = capsys.readouterr()
