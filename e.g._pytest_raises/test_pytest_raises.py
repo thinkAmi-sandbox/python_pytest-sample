@@ -2,7 +2,8 @@ from unittest.mock import patch, MagicMock
 import pytest
 from pytest_raises import Target
 
-class Test_Target(object):
+
+class TestTarget(object):
     def test_mock_patch(self):
         """patchだけを使う
 
@@ -13,7 +14,6 @@ class Test_Target(object):
             sut = Target()
             actual = sut.target_method()
             assert mock_run.call_count == 1
-
 
     def test_mistake_usage_pytest_raises(self):
         """patchとraisesを使う
@@ -28,7 +28,6 @@ class Test_Target(object):
             actual = sut.target_method()
             assert mock_run.call_count == 1
 
-
     def test_mistake_usage_pytest_raises_but_test_pass(self):
         """patchとraisesを使う
 
@@ -42,13 +41,12 @@ class Test_Target(object):
             actual = sut.target_method()
             assert mock_run.call_count == 2
 
-
-    @pytest.mark.xfail
     def test_correct_usage_pytest_raises_and_test_fail(self):
         """patchとraisesを使う
 
         pytest.raisesの正しい使い方
         コンテキストが例外を送出するメソッドで終わっている
+        そのため、正しくテストが失敗する
         """
         mock_run = MagicMock(side_effect=AssertionError)
         with patch('pytest_raises.Validator.run', mock_run):
